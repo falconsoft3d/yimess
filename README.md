@@ -19,4 +19,4 @@ npm run build
 npm start
 ```
 
-![Alt text](https://github.com/partcombinator/partcombinator-nextjs/blob/main/public/img/01.png?raw=true "myslink1")
+![Alt text](https://github.com/partcombinator/partcombinator-nextjs/blob/main/public/img/01y.png?raw=true "myslink1")
