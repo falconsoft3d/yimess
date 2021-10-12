@@ -38,7 +38,7 @@ export default function Login() {
           });
         } else {
           login(response.accessToken);
-          router.push("/dashboard");
+          router.push("/");
         }
       resetForm({ values: "" });
       setIsLoading(false);
@@ -49,7 +49,7 @@ export default function Login() {
         <Flex height="100vh" align="center" justifyContent="center">
           <form onSubmit={formik.handleSubmit}>
             <Link href="/">
-                <Heading mb={6} align="center" color={'orange'}>{process.env.NAME_APP}</Heading>
+                <Heading mb={6} align="center" color={'#E4EEE0'}>{process.env.NAME_APP}</Heading>
             </Link>
             <Flex direction="column" backgroundColor={formBackground} p={20} rouded={6}>
                 <Heading mb={6} align="center">Login</Heading>
@@ -72,7 +72,7 @@ export default function Login() {
                        isInvalid={formik.errors.password}
                       name="password"
                        />
-              <Button isLoading={isLoading} colorScheme="orange" type="submit">Login</Button>
+              <Button isLoading={isLoading} colorScheme="green" type="submit">Login</Button>
               <Flex align="center" mt={2}>
                     Already got an account?<Link href="/register">Register</Link> 
               </Flex>

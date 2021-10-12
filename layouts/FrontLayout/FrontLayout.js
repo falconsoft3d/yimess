@@ -17,7 +17,7 @@ import Navbar from '../../components/Front/Navbar'
 
 
 export default function FrontLayout(props) {
-    const { children } = props;
+    const { children, logout, auth } = props;
     return (
         <div>
         <Head>
@@ -29,8 +29,8 @@ export default function FrontLayout(props) {
             rel="stylesheet"
             />
         </Head>
-        <Navbar/>
-        <Container className="content" maxW={"5xl"}>
+        <Navbar auth={auth} logout={logout}/>
+        <Container className="content" maxW={"5xl"} height="80vh">
                 {children}
         </Container>
         <Footer/>

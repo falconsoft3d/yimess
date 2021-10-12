@@ -57,7 +57,7 @@ export default function Register() {
         
       <form onSubmit={formik.handleSubmit}>
       <Link href="/">
-                <Heading mb={6} align="center" color={'orange'}>{process.env.NAME_APP}</Heading>
+                <Heading mb={6} align="center" color={'#E4EEE0'}>{process.env.NAME_APP}</Heading>
             </Link>
         <Flex 
           direction="column"
@@ -98,7 +98,7 @@ export default function Register() {
             isInvalid={formik.errors.userRepeatPassword}
             name="userRepeatPassword"
           />
-          <Button colorScheme="orange" type="submit">
+          <Button colorScheme="green" type="submit">
             Register
           </Button>
 
