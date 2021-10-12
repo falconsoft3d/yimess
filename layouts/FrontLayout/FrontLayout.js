@@ -1,14 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import {
-    Flex,
-    Container,
-    Heading,
-    Stack,
-    Text,
-    Button,
-    Icon,Box,useColorModeValue,SimpleGrid,
-    IconProps,
+    Container
   } from '@chakra-ui/react';
 
 import Footer from '../../components/Front/Footer';

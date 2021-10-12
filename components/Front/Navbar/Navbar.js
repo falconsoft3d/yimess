@@ -6,7 +6,6 @@ import {
   Stack,
   Heading,
   Flex,
-  Text,
   IconButton,
   Button,
   useDisclosure,
@@ -20,8 +19,6 @@ export default function Navbar(props) {
   const { toggleColorMode } = useColorMode();
   const handleToggle = () => (isOpen ? onClose() : onOpen());
   const { auth, logout } = props;
-
-  console.log(auth);
 
   return (
     <Flex
