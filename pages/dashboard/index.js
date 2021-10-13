@@ -61,6 +61,7 @@ export default function Dashboard() {
               <Th>Name</Th>
               <Th>number</Th>
               <Th>Date</Th>
+              <Th>Key</Th>
               <Th>Actions</Th>
               <Th>Active</Th>
             </Tr>
@@ -69,8 +70,9 @@ export default function Dashboard() {
           {map(providers, (item) => (
             <Tr key={item._id}>
               <Td>{item.name}</Td>
-              <Td>{item.phone}</Td>
+              <Td>{item.phone.substr(0,5)+"*****"}</Td>
               <Td>{item.createdAt}</Td>
+              <Td>{item.key}</Td>
               <Td>
               <Link href={`/dashboard/${item._id}`}>
                 <Button leftIcon={<EditIcon />} colorScheme="teal" variant="solid">

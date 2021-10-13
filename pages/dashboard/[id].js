@@ -8,6 +8,8 @@ import {
   useToast,
   Checkbox,
   Divider,
+  Box,
+  Image,
 } from "@chakra-ui/react";
 import useAuth from "../../hooks/useAuth";
 import { EditIcon } from "@chakra-ui/icons";
@@ -15,8 +17,9 @@ import { getProviders } from "../../api/provider";
 import { useRouter } from "next/router";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { addProvider } from "../../api/provider";
+import { updateProviderApi } from "../../api/provider";
 import Link from "next/link";
+
 
 export default function Dashboard() {
   const { logout, auth, setReloadUser } = useAuth();
@@ -31,8 +34,6 @@ export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(false);
   const { query } = useRouter();
 
-  console.log(query);
-
   useEffect(() => {
     (async () => {
       if (auth) {
@@ -40,15 +41,10 @@ export default function Dashboard() {
         setProviders(response.providers);
         const providers = response.providers;
         const id = query.id;
-        console.log("id:", id);
         const provider = providers.filter(
           (item_provider) => item_provider._id === query.id
         )[0];
-
-        console.log("providers:1", providers);
-        console.log("providers:2", provider);
         setProvider(provider);
-
         setUpdateProvider(false);
         setLoading(true);
       }
@@ -58,6 +54,8 @@ export default function Dashboard() {
   function initialValues() {
     return {
       phone: provider ? provider.phone : "",
+      active: provider ? provider.active : "",
+      key: provider ? provider.key : "",
     };
   }
 
@@ -67,17 +65,22 @@ export default function Dashboard() {
     };
   }
 
+  const connect = () => {
+    console.log("Connecting")
+  }
+
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: initialValues(),
     validationSchema: Yup.object(validationSchema()),
+    
     onSubmit: async (formData, { resetForm }) => {
       setIsLoading(true);
       formData.userId = auth.idUser;
       formData.name = "whatsapp";
-      formData.active = false;
+      formData.active = formData.active;
 
-      const response = await addProvider(formData);
+      const response = await updateProviderApi(formData, query.id );
       if (!response.success) {
         toast({
           title: `${response.error}`,
@@ -96,23 +99,39 @@ export default function Dashboard() {
 
   return (
     <AdminLayout>
-      {!loading && <h1>Loading...</h1>}
-      {loading && (
+      {!provider && loading && <h1>Loading...</h1>}
+      {provider && loading && (
         <div className="container">
           <form onSubmit={formik.handleSubmit}>
             <FormControl id="phone" isRequired>
               <FormLabel>Phone</FormLabel>
               <Input
                 placeholder="Phone"
-                type="phone"
+                type="text"
                 onChange={formik.handleChange}
                 value={formik.values.phone}
                 isInvalid={formik.errors.phone}
                 name="phone"
               />
+
+            <Input placeholder="Key" mt={5}
+                      type="text"
+                      onChange={formik.handleChange}
+                      value={formik.values.key}
+                      isInvalid={formik.errors.key}
+                      name="key"
+                      variant="filled"
+              />
+
             </FormControl>
+
             <FormControl id="active" mt={5}>
-              <Checkbox defaultIsChecked>Active</Checkbox>
+              <Checkbox defaultIsChecked={provider && provider.active}
+                name="active"
+                onChange={formik.handleChange}
+                value={formik.values.active}
+                >Active
+                </Checkbox>
             </FormControl>
 
             <Button
@@ -128,8 +147,12 @@ export default function Dashboard() {
 
           <Divider m={5} />
 
-          <Button leftIcon={<EditIcon />} colorScheme="pink" variant="solid">
-            Load QR Web
+          <Box boxSize="sm">
+            <Image src="/img/Image-not-found.png" alt="Segun Adebayo" width="400" height="400" />
+          </Box>
+
+          <Button mt={7} leftIcon={<EditIcon />} colorScheme="pink" variant="solid" onClick={()=>connect()}>
+            Connect
           </Button>
         </div>
       )}

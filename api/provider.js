@@ -46,3 +46,23 @@ export async function deleteProvider(id) {
       return null;
     }
   }
+
+  export async function updateProviderApi(formData, id) {
+    try {
+      const url = `${process.env.URL_SERVER}/api/providers/${id}`;
+      const params = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      };
+      
+      const result = await authFetch(url, params);
+      
+      return result;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }

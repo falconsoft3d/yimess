@@ -4,6 +4,7 @@ const Providerchema = new mongoose.Schema(
     {
     userId: { type: String, required: true },
     name: { type: String, required: true },
+    key: { type: String },
     phone: { type: String },
     active: {
       type: Boolean,

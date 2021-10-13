@@ -12,6 +12,7 @@ export default async function handler(req, res) {
     case "POST":
       try {
         const data = req.body;
+        console.log(data)
         const provider = await Provider.create(data); /* create a new model in the database */
         console.log("provider:", provider)
         res.status(201).json({ success: true, data: provider });

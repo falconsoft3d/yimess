@@ -24,17 +24,20 @@ export default async function handler(req, res) {
       break
 
     case 'PUT' /* Edit a model by its ID */:
+      console.log("PUT")
       try {
         const provider = await Provider.findByIdAndUpdate(id, req.body, {
           new: true,
           runValidators: true,
         })
+
+
         if (!provider) {
-          return res.status(400).json({ success: false })
+          return res.status(400).json({ success: false, error: "provider"})
         }
         res.status(200).json({ success: true, data: provider })
       } catch (error) {
-        res.status(400).json({ success: false })
+        res.status(400).json({ success: false, error: error })
       }
       break
 

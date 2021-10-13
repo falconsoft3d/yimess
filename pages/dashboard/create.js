@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { addProvider } from '../../api/provider';
+import { uid } from 'uid';
 
 export default function Dashboard() {
   const { logout, auth, setReloadUser } = useAuth();
@@ -29,6 +30,7 @@ export default function Dashboard() {
         setIsLoading(true);
         formData.userId = auth.idUser;
         formData.name = "whatsapp";
+        formData.key = uid(32);
         formData.active = false;
 
         const response = await addProvider(formData);
@@ -55,12 +57,15 @@ export default function Dashboard() {
           <FormControl id="first-name" isRequired>
               <FormLabel>Phone</FormLabel>
               <Input placeholder="Phone"
-                      type="phone"
+                      type="text"
                       onChange={formik.handleChange}
                       value={formik.values.phone}
                       isInvalid={formik.errors.phone}
                       name="phone"
               />
+
+            
+
           </FormControl>
           <Button mt={2}  leftIcon={<EditIcon />} colorScheme="whatsapp" variant="solid" type="submit">
                     Save
