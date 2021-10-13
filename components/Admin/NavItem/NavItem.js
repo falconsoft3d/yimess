@@ -5,11 +5,10 @@ import {
     Icon,
     Link,
     Menu,
-    MenuButton,
-    MenuList
+    MenuButton
 } from '@chakra-ui/react'
 
-export default function NavItem({ icon, title, description, active, navSize }) {
+export default function NavItem({ icon, title, active, navSize }) {
     return (
         <Flex
             mt={30}

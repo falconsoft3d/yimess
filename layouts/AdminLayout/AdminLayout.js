@@ -11,7 +11,7 @@ export default function AdminLayout(props) {
       <Flex w="100%">
         <Sidebar logout={logout}/>
         <Flex
-          ml={10} mt={5}>
+          ml={10} mt={10}>
           {children}
         </Flex>
       </Flex>
