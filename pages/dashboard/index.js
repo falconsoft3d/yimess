@@ -72,15 +72,15 @@ export default function Dashboard() {
               <Td>{item.phone}</Td>
               <Td>{item.createdAt}</Td>
               <Td>
-                    
-              <Button leftIcon={<EditIcon />} colorScheme="teal" variant="solid">
-                Edit
-              </Button>
-
-              <Button onClick={() => DeteleItem(item._id)} leftIcon={<DeleteIcon />} colorScheme="pink" variant="solid" ml={2}>
-                Delete
-              </Button>
-
+              <Link href={`/dashboard/${item._id}`}>
+                <Button leftIcon={<EditIcon />} colorScheme="teal" variant="solid">
+                  Edit
+                </Button>
+              </Link>
+                <Button onClick={() => DeteleItem(item._id)} leftIcon={<DeleteIcon />} colorScheme="pink" variant="solid" ml={2}>
+                  Delete
+                </Button>
+              
               </Td>
               <Td>{item.active ? "True" : "False" }</Td>
             </Tr>

@@ -1,6 +1,6 @@
 import { authFetch } from "../utils/fetch";
 
-export async function getProvider(idUser) {
+export async function getProviders(idUser) {
     try {
       const url = `${process.env.URL_SERVER}/api/providers/byuser/${idUser}`;
       const response = await authFetch(url);
