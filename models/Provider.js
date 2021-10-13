@@ -5,7 +5,10 @@ const Providerchema = new mongoose.Schema(
     userId: { type: String, required: true },
     name: { type: String, required: true },
     phone: { type: String },
-    state: { type: String },
+    active: {
+      type: Boolean,
+      default: false,
+    }
     },  
     { timestamps: true }
   )

@@ -25,4 +25,24 @@ export async function deleteProvider(id) {
         console.log(error);
       return null;
     }
-  }  
+  }
+  
+  
+  export async function addProvider(formData) {
+    try {
+      const url = `${process.env.URL_SERVER}/api/providers/`;
+      const params = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      };
+      const response = await authFetch(url, params);
+      const result = await response;
+      return result;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }

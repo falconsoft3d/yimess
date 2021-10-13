@@ -60,8 +60,9 @@ export default function Dashboard() {
             <Tr>
               <Th>Name</Th>
               <Th>number</Th>
+              <Th>Date</Th>
               <Th>Actions</Th>
-              <Th>STATE</Th>
+              <Th>Active</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -69,6 +70,7 @@ export default function Dashboard() {
             <Tr key={item._id}>
               <Td>{item.name}</Td>
               <Td>{item.phone}</Td>
+              <Td>{item.createdAt}</Td>
               <Td>
                     
               <Button leftIcon={<EditIcon />} colorScheme="teal" variant="solid">
@@ -80,7 +82,7 @@ export default function Dashboard() {
               </Button>
 
               </Td>
-              <Td>{item.state}</Td>
+              <Td>{item.active ? "True" : "False" }</Td>
             </Tr>
             ))}
           </Tbody>
