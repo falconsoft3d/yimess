@@ -22,17 +22,6 @@ export default function Dashboard() {
   const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    (async () => {
-      if (auth) {
-        const response = await getProvider(auth.idUser);
-        setProviders(response.providers);
-        setUpdateProvider(false);
-      }
-    })();
-  }, [updateProvider, auth]);
-
-
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: Yup.object(validationSchema()),

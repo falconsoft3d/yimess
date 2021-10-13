@@ -13,7 +13,7 @@ import {
 import { map } from "lodash";
 import useAuth from "../../hooks/useAuth";
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
-import {getProvider, deleteProvider} from '../../api/provider';
+import {getProviders, deleteProvider} from '../../api/provider';
 
 
 export default function Dashboard() {
@@ -23,7 +23,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     (async () => {
-      const response = await getProvider(auth.idUser);
+      const response = await getProviders(auth.idUser);
       setProviders(response.providers);
       setUpdateProvider(false);
     })();

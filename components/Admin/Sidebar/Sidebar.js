@@ -45,7 +45,7 @@ export default function Sidebar({logout}) {
                             changeNavSize("small")
                     }}
                 />
-                <NavItem navSize={navSize} icon={FiPhoneOutgoing} title="Providers" />
+                <Link href="/dashboard"><a><NavItem navSize={navSize} icon={FiPhoneOutgoing} title="Providers" /></a></Link>
                 <Link href="/"><a><NavItem navSize={navSize} icon={FiHome} title="Home" /></a></Link>
                 {/* <NavItem navSize={navSize} onClick={logout} icon={FiLogOut} title="Log Out" /> */}
             </Flex>
